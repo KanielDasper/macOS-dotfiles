@@ -1,0 +1,55 @@
+# KanielDasper/alacritty.toml
+live_config_reload = true
+
+# Themes
+import = [
+    "~/.config/alacritty/catppuccin/catppuccin-macchiato.toml" 
+]
+
+# Specify terminal environment
+[env]
+TERM = "xterm-256color"
+
+# Window customizations
+[window]
+decorations = "buttonless"
+opacity = 0.85
+dynamic_padding = false
+blur = true
+# Windows are sized and positioned for MacBook 14'
+dimensions = { columns = 154, lines = 42 } 
+position = { x = 40, y = 96 } 
+padding = { x = 5, y = 10}
+
+# Font-sizes and types
+[font]
+size = 16
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+# Set terminal history
+[scrolling]
+history = 15000
+
+# Customize cursor
+[cursor]
+blink_interval = 500
+blink_timeout = 5
+unfocused_hollow = false
+
+[colors.cursor]
+cursor = "0xF5E0DC"
+text = "0x1E1D2F"
+
+[selection]
+save_to_clipboard = true
