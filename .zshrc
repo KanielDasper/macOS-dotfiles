@@ -7,7 +7,7 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="edvardm"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -115,8 +115,3 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 # PATH configs 
 export PATH="$HOME/.rbenv/shims:$PATH"
 eval "$(rbenv init -)"
-
-alias vim=nvim
-alias cat=bat
-alias ls=colorls
-alias linuxserver=./connect_to_server.sh
