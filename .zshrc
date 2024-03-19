@@ -64,7 +64,7 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search copyfile dirhistory history)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search copyfile)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -115,3 +115,6 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 # PATH configs 
 export PATH="$HOME/.rbenv/shims:$PATH"
 eval "$(rbenv init -)"
+
+# To customize prompt, run `p10k configure` or edit ~/dot-files/.p10k.zsh.
+[[ ! -f ~/dot-files/.p10k.zsh ]] || source ~/dot-files/.p10k.zsh
