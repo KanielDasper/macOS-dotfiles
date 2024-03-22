@@ -107,6 +107,8 @@ alias vim=nvim
 alias cat=bat
 alias ls=colorls
 alias linuxserver=./connect_to_server.sh
+alias colorscheme='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f "; [[ $((i%6)) -eq 3 ]] && echo; done'
+alias fileshare='python3 -m http.server 8000'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
