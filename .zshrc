@@ -118,6 +118,12 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 # PATH configs 
 export PATH="$HOME/.rbenv/shims:$PATH"
 eval "$(rbenv init -)"
+export PATH=$PATH:/usr/local/scripts
 
 # To customize prompt, run `p10k configure` or edit ~/dot-files/.p10k.zsh.
 [[ ! -f ~/dot-files/.p10k.zsh ]] || source ~/dot-files/.p10k.zsh
+
+# Add fzf keybindings and fuzzy completion
+eval "$(fzf --zsh)"
+# Git script for checking branch and commithistory with "Ctrl + g + h" && "git checkout + Ctrl + g + b"
+source ~/fzf-git.sh/fzf-git.sh
