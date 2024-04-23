@@ -105,7 +105,6 @@ export ARCHFLAGS="-arch x86_64"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim=nvim
 alias cat=bat
-alias ls=colorls
 alias linuxserver=./connect_to_server.sh
 alias colorscheme='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f "; [[ $((i%6)) -eq 3 ]] && echo; done'
 alias fileshare='python3 -m http.server 8000'
@@ -127,3 +126,24 @@ export PATH=$PATH:/usr/local/scripts
 eval "$(fzf --zsh)"
 # Git script for checking branch and commithistory with "Ctrl + g + h" && "git checkout + Ctrl + g + b"
 source ~/fzf-git.sh/fzf-git.sh
+
+# -- Bat (better cat) ---
+export BAT_THEME=tokyonight_night
+
+# -- Eza (better ls) ---
+alias ls="eza --color=always --across --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+
+export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
+  esac
+}
