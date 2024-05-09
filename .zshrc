@@ -64,7 +64,17 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search copyfile)
+plugins=(
+	git 
+	zsh-autosuggestions 
+	zsh-syntax-highlighting
+	web-search 
+	copyfile 
+	python 
+	rbenv 
+	ruby
+)
+bindkey '^Y' autosuggest-accept
 
 source $ZSH/oh-my-zsh.sh
 
@@ -107,16 +117,18 @@ alias vim=nvim
 alias cat=bat
 alias linuxserver=./connect_to_server.sh
 alias colorscheme='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f "; [[ $((i%6)) -eq 3 ]] && echo; done'
-alias fileshare='python3 -m http.server 8000'
+# NOTE: The python plugin for oh-my-zsh now provides fileshare alias as pyserver 
+# alias fileshare='python3 -m http.server 8000'
 alias dockspace="defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' && killall Dock"
+alias fzfman='compgen -c|fzf|xargs tldr'
+alias filesize='du -ah . | sort -hr | head -n 10'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # PATH configs 
-export PATH="$HOME/.rbenv/shims:$PATH"
-eval "$(rbenv init -)"
+export PATH=$PATH:/.rbenv/shims
 export PATH=$PATH:/usr/local/scripts
 
 # To customize prompt, run `p10k configure` or edit ~/dot-files/.p10k.zsh.
@@ -131,7 +143,7 @@ source ~/fzf-git.sh/fzf-git.sh
 export BAT_THEME=tokyonight_night
 
 # -- Eza (better ls) ---
-alias ls="eza --color=always --across --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+alias ls="eza -a --color=always --across --git --no-filesize --icons=always --no-time --no-user"
 
 export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
